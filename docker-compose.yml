@@ -1,0 +1,30 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ott-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: ott-mylist-api
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URI: mongodb://host.docker.internal:27017/ott-mylist
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CACHE_ENABLED: "true"
+    depends_on:
+      - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  redis_data:
