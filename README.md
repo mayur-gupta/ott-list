@@ -12,7 +12,7 @@ A production-ready backend service for the "My List" feature of an OTT platform.
 
 ## 📋 Prerequisites
 
-- Node.js 18+ 
+- Node.js 22 
 - MongoDB 5.0+
 - Redis 6.0+ (optional but recommended for optimal performance)
 
@@ -22,7 +22,7 @@ A production-ready backend service for the "My List" feature of an OTT platform.
 
 1. **Clone the repository**
 ```bash
-cd C:\Users\meetm\.gemini\antigravity\scratch\ott-mylist-feature
+git clone https://github.com/mayur-gupta/ott-list
 ```
 
 2. **Install dependencies**
@@ -33,7 +33,7 @@ npm install
 3. **Configure environment variables**
 ```bash
 # Copy the example env file
-copy .env.example .env
+copy sample.env .env
 
 # Edit .env with your configuration
 ```
@@ -295,29 +295,3 @@ docker-compose down
 
 5. **Cache Strategy**: Short TTL (1 minute) for list data to balance performance and data freshness.
 
-## 📈 Performance Benchmarks
-
-Expected performance metrics:
-- **List My Items (cached)**: <5ms
-- **List My Items (uncached)**: <10ms
-- **Add to My List**: <20ms
-- **Remove from My List**: <15ms
-
-## 🚀 Production Deployment
-
-For production deployment, consider:
-
-1. **Environment Variables**: Set all production values
-2. **MongoDB**: Use MongoDB Atlas or managed MongoDB
-3. **Redis**: Use Redis Cloud or managed Redis
-4. **Monitoring**: Add APM tools (New Relic, Datadog)
-5. **Logging**: Centralized logging (ELK stack, CloudWatch)
-6. **CI/CD**: Automated testing and deployment pipelines
-
-## 📝 License
-
-MIT
-
-## 👨‍💻 Author
-
-Built for OTT Platform Assignment
